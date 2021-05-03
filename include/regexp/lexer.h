@@ -15,6 +15,7 @@ namespace RegExp
     {
     public:
         Lexer(std::string*);
+        Lexer(const char*);
         std::list<Token*>* parseTokens();
 
     private:

@@ -7,7 +7,8 @@ CppUnitTest::TestCase* testCase01()
     CppUnitTest::TestCase* t = new CppUnitTest::TestCase("001-simple-test");
     t->printTitle();
 
-    RegExp::Expression expr("[a-z]+");
+    RegExp::Lexer lexer("[a-z]+");
+    auto tokens = lexer.parseTokens();
 
     t->finish();
     return t;

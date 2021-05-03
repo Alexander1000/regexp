@@ -9,6 +9,13 @@ namespace RegExp
         this->state = StateMode::Main;
     }
 
+    Lexer::Lexer(const char *expr)
+    {
+        this->expr = new std::string(expr);
+        this->currentPosition = 0;
+        this->state = StateMode::Main;
+    }
+
     std::list<Token*>* Lexer::parseTokens()
     {
         auto tokens = new std::list<Token*>;
