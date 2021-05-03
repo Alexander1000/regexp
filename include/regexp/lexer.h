@@ -8,6 +8,7 @@ namespace RegExp
 {
     enum StateMode {
         Main,
+        SquareBlockSelect,
     };
 
     class Lexer

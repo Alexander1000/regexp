@@ -29,11 +29,27 @@ namespace RegExp
             return nullptr;
         }
 
-        if (*symbol == '?' || *symbol == '+' || *symbol == '*') {
-            char* val = new char[2];
-            val[0] = *symbol;
-            val[1] = 0;
-            return new Token(TokenType::Quantifier, val);
+        switch (this->state) {
+            case StateMode::Main: {
+                if (*symbol == '?' || *symbol == '+' || *symbol == '*') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    return new Token(TokenType::Quantifier, val);
+                }
+
+                if (*symbol == '[') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    this->state = StateMode::SquareBlockSelect;
+                    return new Token(TokenType::SquareBracketOpen, val);
+                }
+                break;
+            }
+            case StateMode::SquareBlockSelect: {
+                break;
+            }
         }
 
         return nullptr;

@@ -7,6 +7,8 @@ namespace RegExp
         Quantifier, // ?, +, *
         GroupOpen, // (
         GroupClose, // )
+        SquareBracketOpen, // [
+        SquareBracketClose, // ]
     };
 
     class Token
