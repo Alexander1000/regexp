@@ -9,6 +9,10 @@ namespace RegExp
         GroupClose, // )
         SquareBracketOpen, // [
         SquareBracketClose, // ]
+        StartOfLine, // ^
+        EndOfLine, // $
+        InvertAlphabet, // ^ (context: [^abc])
+        Alphabet, // context: [abc]
     };
 
     class Token
