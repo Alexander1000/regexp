@@ -11,8 +11,8 @@ if(NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)
     set(CMAKE_INSTALL_INCLUDEDIR include)
 endif(NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)
 
-# installation of json-stream-analyzer CXX library headers
-# install(DIRECTORY include/regexp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+# installation of regexp CXX library headers
+install(DIRECTORY include/regexp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 #----------------#
 # Static library #
@@ -31,12 +31,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS -fPIC)
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 
-# find_library(IO_BUFFER libio-buffer.a)
-# message(STATUS "Found io-buffer library: ${IO_BUFFER}")
-
 include_directories(/usr/local/include)
-
-# target_link_libraries(${PROJECT_NAME} ${IO_BUFFER})
 
 install (TARGETS ${PROJECT_NAME}
     ARCHIVE DESTINATION lib
