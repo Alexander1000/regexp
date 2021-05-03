@@ -6,6 +6,10 @@
 
 namespace RegExp
 {
+    enum StateMode {
+        Main,
+    };
+
     class Lexer
     {
     public:
@@ -13,6 +17,8 @@ namespace RegExp
         std::list<Token*>* parseTokens();
 
     private:
+        StateMode state;
+
         std::string* expr;
         int currentPosition;
 

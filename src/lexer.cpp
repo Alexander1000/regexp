@@ -6,6 +6,7 @@ namespace RegExp
     {
         this->expr = expr;
         this->currentPosition = 0;
+        this->state = StateMode::Main;
     }
 
     std::list<Token*>* Lexer::parseTokens()

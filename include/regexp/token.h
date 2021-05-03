@@ -4,7 +4,9 @@
 namespace RegExp
 {
     enum TokenType {
-        Quantifier
+        Quantifier, // ?, +, *
+        GroupOpen, // (
+        GroupClose, // )
     };
 
     class Token
