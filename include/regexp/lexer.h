@@ -14,8 +14,10 @@ namespace RegExp
 
     private:
         std::string* expr;
+        int currentPosition;
 
         Token* getNextToken();
+        const char* getNextChar();
     };
 }
 

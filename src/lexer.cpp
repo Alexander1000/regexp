@@ -5,6 +5,7 @@ namespace RegExp
     Lexer::Lexer(std::string *expr)
     {
         this->expr = expr;
+        this->currentPosition = 0;
     }
 
     std::list<Token*>* Lexer::parseTokens()
@@ -22,6 +23,20 @@ namespace RegExp
 
     Token* Lexer::getNextToken()
     {
+        const char* symbol = this->getNextChar();
+        if (symbol == nullptr) {
+            return nullptr;
+        }
+
         return nullptr;
+    }
+
+    const char* Lexer::getNextChar()
+    {
+        if (this->currentPosition == this->expr->length()) {
+            return nullptr;
+        }
+
+        return this->expr->c_str() + (this->currentPosition++);
     }
 }
