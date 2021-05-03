@@ -1,2 +1,7 @@
 /.idea
 /cmake-build-debug
+/cmake_install.cmake
+/Makefile
+/libregexp.a
+/CMakeCache.txt
+/CMakeFiles
