@@ -2,6 +2,7 @@
 #define H_REGEXP_LEXER_INCLUDE
 
 #include <list>
+#include <stack>
 #include <regexp/token.h>
 
 namespace RegExp
@@ -20,12 +21,16 @@ namespace RegExp
 
     private:
         StateMode state;
+        std::stack<StateMode>* stateStack;
 
         std::string* expr;
         int currentPosition;
 
         Token* getNextToken();
         const char* getNextChar();
+
+        void switchToMode(StateMode);
+        void switchToPreviousMode();
     };
 }
 

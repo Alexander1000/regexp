@@ -7,6 +7,7 @@ namespace RegExp
         this->expr = expr;
         this->currentPosition = 0;
         this->state = StateMode::Main;
+        this->stateStack = new std::stack<StateMode>;
     }
 
     Lexer::Lexer(const char *expr)
@@ -14,6 +15,7 @@ namespace RegExp
         this->expr = new std::string(expr);
         this->currentPosition = 0;
         this->state = StateMode::Main;
+        this->stateStack = new std::stack<StateMode>;
     }
 
     std::list<Token*>* Lexer::parseTokens()
@@ -49,7 +51,7 @@ namespace RegExp
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
-                    this->state = StateMode::SquareBlockSelect;
+                    this->switchToMode(StateMode::SquareBlockSelect);
                     return new Token(TokenType::SquareBracketOpen, val);
                 }
                 break;
@@ -69,5 +71,17 @@ namespace RegExp
         }
 
         return this->expr->c_str() + (this->currentPosition++);
+    }
+
+    void Lexer::switchToMode(StateMode newState)
+    {
+        this->stateStack->push(this->state);
+        this->state = newState;
+    }
+
+    void Lexer::switchToPreviousMode()
+    {
+        this->state = this->stateStack->top();
+        this->stateStack->pop();
     }
 }
