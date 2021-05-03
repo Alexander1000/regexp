@@ -3,12 +3,16 @@
 
 namespace RegExp
 {
+    enum TokenType {
+        Quantifier
+    };
+
     class Token
     {
     public:
-        Token(int, const char*);
+        Token(TokenType, const char*);
     private:
-        int id;
+        TokenType type;
         const char* value;
     };
 }

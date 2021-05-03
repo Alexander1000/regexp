@@ -28,6 +28,13 @@ namespace RegExp
             return nullptr;
         }
 
+        if (*symbol == '?' || *symbol == '+' || *symbol == '*') {
+            char* val = new char[2];
+            val[0] = *symbol;
+            val[1] = 0;
+            return new Token(TokenType::Quantifier, val);
+        }
+
         return nullptr;
     }
 
