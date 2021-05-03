@@ -5,14 +5,23 @@ namespace RegExp
 {
     enum TokenType {
         Quantifier, // ?, +, *
-        GroupOpen, // (
-        GroupClose, // )
+        CaptureOpen, // (
+        CaptureClose, // )
         SquareBracketOpen, // [
         SquareBracketClose, // ]
         StartOfLine, // ^
         EndOfLine, // $
         InvertAlphabet, // ^ (context: [^abc])
         Alphabet, // context: [abc]
+        AnySymbol, // .
+        Whitespace, // \s
+        Match, // similar alphabet, but full match
+        QuantifierOpen, // {
+        QuantifierClose, // }
+        // complex quantifier
+        QuantifierFrom, // context: [a-z]{n,m}
+        QuantifierDelimiter, // context: [a-z]{n,m}
+        QuantifierTo, // context: [a-z]{n,m}
     };
 
     class Token
