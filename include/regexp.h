@@ -3,5 +3,6 @@
 
 #include <regexp/expression.h>
 #include <regexp/lexer.h>
+#include <regexp/token.h>
 
 #endif

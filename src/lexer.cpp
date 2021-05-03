@@ -4,6 +4,11 @@ namespace RegExp
 {
     Lexer::Lexer(std::string *expr)
     {
-        // do something
+        this->expr = expr;
+    }
+
+    std::list<Token*>* Lexer::parseTokens()
+    {
+        return nullptr;
     }
 }
