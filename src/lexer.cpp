@@ -57,6 +57,14 @@ namespace RegExp
                 break;
             }
             case StateMode::SquareBlockSelect: {
+                if (*symbol == ']') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    this->switchToPreviousMode();
+                    return new Token(TokenType::SquareBracketClose, val);
+                }
+
                 break;
             }
         }
