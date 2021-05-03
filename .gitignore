@@ -5,3 +5,9 @@
 /libregexp.a
 /CMakeCache.txt
 /CMakeFiles
+/install_manifest.txt
+tests/CMakeFiles
+tests/CMakeCache.txt
+tests/regexp-tests
+tests/Makefile
+tests/cmake_install.cmake
