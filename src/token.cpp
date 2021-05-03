@@ -2,9 +2,9 @@
 
 namespace RegExp
 {
-    Token::Token(TokenType type, const char* value)
+    Token::Token(TokenType type, void* data)
     {
         this->type = type;
-        this->value = value;
+        this->data = data;
     }
 }

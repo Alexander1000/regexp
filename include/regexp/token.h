@@ -14,10 +14,10 @@ namespace RegExp
     class Token
     {
     public:
-        Token(TokenType, const char*);
+        Token(TokenType, void*);
     private:
         TokenType type;
-        const char* value;
+        void* data;
     };
 }
 
