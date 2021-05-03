@@ -14,6 +14,8 @@ namespace RegExp
 
     private:
         std::string* expr;
+
+        Token* getNextToken();
     };
 }
 
