@@ -11,3 +11,5 @@ tests/CMakeCache.txt
 tests/regexp-tests
 tests/Makefile
 tests/cmake_install.cmake
+/regexp.cbp
+/Testing

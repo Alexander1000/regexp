@@ -8,6 +8,8 @@ project(regexp-tests)
 
 set(REGEXP_SOURCES
     ../src/regexp.cpp
+    ../src/lexer.cpp
+    ../src/token.cpp
 )
 
 # find_library(IO_BUFFER libio-buffer.a)
