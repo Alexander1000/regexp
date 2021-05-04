@@ -97,6 +97,7 @@ namespace RegExp
                     val[1] = '-';
                     val[2] = *fSymbol2;
                     val[3] = 0;
+                    this->currentPosition += 2;
                     return new Token(TokenType::AlphabetRange, val);
                 }
 
