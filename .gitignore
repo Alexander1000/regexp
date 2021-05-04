@@ -13,3 +13,5 @@ tests/Makefile
 tests/cmake_install.cmake
 /regexp.cbp
 /Testing
+/regexp-tests.cbp
+/regexp-tests
