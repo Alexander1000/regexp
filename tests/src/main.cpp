@@ -5,6 +5,7 @@ int main() {
     CppUnitTest::TestSuite testSuite;
 
     testSuite.addTestCase(RegExpTests::testLexerMatchTokensCase01());
+    testSuite.addTestCase(RegExpTests::testLexerMatchTokensCase02());
 
     testSuite.printTotal();
 

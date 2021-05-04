@@ -101,7 +101,10 @@ namespace RegExp
                     return new Token(TokenType::AlphabetRange, val);
                 }
 
-                throw LexerException();
+                char* val = new char[2];
+                val[0] = *symbol;
+                val[1] = 0;
+                return new Token(TokenType::Alphabet, val);
             }
         }
 
