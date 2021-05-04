@@ -23,6 +23,8 @@ namespace RegExp
         StateMode state;
         std::stack<StateMode>* stateStack;
 
+        char lastSymbol;
+
         std::string* expr;
         int currentPosition;
 

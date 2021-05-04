@@ -8,6 +8,7 @@ namespace RegExp
         this->currentPosition = 0;
         this->state = StateMode::Main;
         this->stateStack = new std::stack<StateMode>;
+        this->lastSymbol = 0;
     }
 
     Lexer::Lexer(const char *expr)
@@ -16,6 +17,7 @@ namespace RegExp
         this->currentPosition = 0;
         this->state = StateMode::Main;
         this->stateStack = new std::stack<StateMode>;
+        this->lastSymbol = 0;
     }
 
     std::list<Token*>* Lexer::parseTokens()
@@ -65,7 +67,7 @@ namespace RegExp
                     return new Token(TokenType::SquareBracketClose, val);
                 }
 
-                if (*symbol == '^') {
+                if (*symbol == '^' && this->lastSymbol == '[') {
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
@@ -108,6 +110,10 @@ namespace RegExp
     {
         if (this->currentPosition == this->expr->length()) {
             return nullptr;
+        }
+
+        if (this->currentPosition > 0) {
+            this->lastSymbol = this->expr->c_str()[this->currentPosition - 1];
         }
 
         return this->expr->c_str() + (this->currentPosition++);
