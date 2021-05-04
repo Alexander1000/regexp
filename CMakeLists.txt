@@ -64,6 +64,7 @@ set(REGEXP_SOURCES_TEST
     tests/src/main.cpp
     ${REGEXP_SOURCES}
     tests/src/asserts.cpp
+    tests/src/test-cases/lexer_tests.cpp
 )
 
 add_executable(
