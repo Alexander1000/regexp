@@ -56,12 +56,19 @@ message(STATUS "Found cpp-unit-test: ${CPP_UNIT_TEST}")
 
 include_directories(
     include
+    tests/include
     /usr/local/include
 )
 
-add_executable(
-    ${PROJECT_NAME} tests/main.cpp
+set(REGEXP_SOURCES_TEST
+    tests/src/main.cpp
     ${REGEXP_SOURCES}
+    tests/src/asserts.cpp
+)
+
+add_executable(
+    ${PROJECT_NAME} tests/src/main.cpp
+    ${REGEXP_SOURCES_TEST}
 )
 
 target_link_libraries(${PROJECT_NAME}

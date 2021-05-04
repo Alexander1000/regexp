@@ -1,10 +1,11 @@
 #include <iostream>
 #include <cpp-unit-test.h>
 #include <regexp.h>
+#include <tests.h>
 
 CppUnitTest::TestCase* testCase01()
 {
-    CppUnitTest::TestCase* t = new CppUnitTest::TestCase("001-simple-test");
+    auto t = new CppUnitTest::TestCase("001-simple-test");
     t->printTitle();
 
     RegExp::Lexer lexer("[a-z]+");
@@ -13,7 +14,7 @@ CppUnitTest::TestCase* testCase01()
     CppUnitTest::assertEquals(t, 4, tokens->size());
 
     auto tokenIt = tokens->begin();
-    (*tokenIt)->getType();
+    RegExpTests::assertEquals(t, RegExp::TokenType::SquareBracketOpen, (*tokenIt)->getType());
 
     t->finish();
     return t;
