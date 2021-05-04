@@ -6,6 +6,7 @@ int main() {
 
     testSuite.addTestCase(RegExpTests::testLexerMatchTokensCase01());
     testSuite.addTestCase(RegExpTests::testLexerMatchTokensCase02());
+    testSuite.addTestCase(RegExpTests::testLexerMatchTokensCase03());
 
     testSuite.printTotal();
 

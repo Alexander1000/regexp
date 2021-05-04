@@ -13,6 +13,7 @@ namespace RegExpTests
     // test cases
     CppUnitTest::TestCase* testLexerMatchTokensCase01();
     CppUnitTest::TestCase* testLexerMatchTokensCase02();
+    CppUnitTest::TestCase* testLexerMatchTokensCase03();
 }
 
 #endif
