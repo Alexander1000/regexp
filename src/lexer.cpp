@@ -65,6 +65,27 @@ namespace RegExp
                     return new Token(TokenType::SquareBracketClose, val);
                 }
 
+                if (*symbol == '^') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    return new Token(TokenType::InvertAlphabet, val);
+                }
+
+                int startPos, stopPos;
+
+                do {
+                    // make alphabet
+
+                    symbol = this->getNextChar();
+                    if (symbol != nullptr) {
+                        if (*symbol == ']') {
+                            this->currentPosition--;
+                            break;
+                        }
+                    }
+                } while (true);
+
                 break;
             }
         }
