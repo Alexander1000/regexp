@@ -10,6 +10,8 @@ CppUnitTest::TestCase* testCase01()
     RegExp::Lexer lexer("[a-z]+");
     auto tokens = lexer.parseTokens();
 
+    CppUnitTest::assertEquals(t, 4, tokens->size());
+
     t->finish();
     return t;
 }

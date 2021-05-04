@@ -28,10 +28,12 @@ namespace RegExp
     class Token
     {
     public:
-        Token(TokenType, void*);
+        Token(TokenType, const char*);
+        TokenType getType();
+        const char* getData();
     private:
         TokenType type;
-        void* data;
+        const char* data;
     };
 }
 
