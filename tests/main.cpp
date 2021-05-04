@@ -12,6 +12,9 @@ CppUnitTest::TestCase* testCase01()
 
     CppUnitTest::assertEquals(t, 4, tokens->size());
 
+    auto tokenIt = tokens->begin();
+    (*tokenIt)->getType();
+
     t->finish();
     return t;
 }

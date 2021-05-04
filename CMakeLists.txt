@@ -54,7 +54,10 @@ project(regexp-tests)
 find_library(CPP_UNIT_TEST libcpp-unit-test.a)
 message(STATUS "Found cpp-unit-test: ${CPP_UNIT_TEST}")
 
-include_directories(/usr/local/include)
+include_directories(
+    include
+    /usr/local/include
+)
 
 add_executable(
     ${PROJECT_NAME} tests/main.cpp
