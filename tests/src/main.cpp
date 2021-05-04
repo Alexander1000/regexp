@@ -15,6 +15,19 @@ CppUnitTest::TestCase* testCase01()
 
     auto tokenIt = tokens->begin();
     RegExpTests::assertEquals(t, RegExp::TokenType::SquareBracketOpen, (*tokenIt)->getType());
+    CppUnitTest::assertEquals(t, "[", (*tokenIt)->getData());
+
+    tokenIt++;
+    RegExpTests::assertEquals(t, RegExp::TokenType::AlphabetRange, (*tokenIt)->getType());
+    CppUnitTest::assertEquals(t, "a-z", (*tokenIt)->getData());
+
+    tokenIt++;
+    RegExpTests::assertEquals(t, RegExp::TokenType::SquareBracketClose, (*tokenIt)->getType());
+    CppUnitTest::assertEquals(t, "]", (*tokenIt)->getData());
+
+    tokenIt++;
+    RegExpTests::assertEquals(t, RegExp::TokenType::Quantifier, (*tokenIt)->getType());
+    CppUnitTest::assertEquals(t, "+", (*tokenIt)->getData());
 
     t->finish();
     return t;
