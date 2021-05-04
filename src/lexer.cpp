@@ -72,19 +72,30 @@ namespace RegExp
                     return new Token(TokenType::InvertAlphabet, val);
                 }
 
-                int startPos, stopPos;
+                const char* fSymbol = this->getForwardChar(0);
+                if (fSymbol == nullptr || *fSymbol == ']') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    return new Token(TokenType::Alphabet, val);
+                }
 
-                do {
-                    // make alphabet
-
-                    symbol = this->getNextChar();
-                    if (symbol != nullptr) {
-                        if (*symbol == ']') {
-                            this->currentPosition--;
-                            break;
-                        }
+                if (*fSymbol == '-') {
+                    const char* fSymbol2 = this->getForwardChar(1);
+                    if (fSymbol2 == nullptr || *fSymbol2 == ']') {
+                        char* val = new char[2];
+                        val[0] = *symbol;
+                        val[1] = 0;
+                        return new Token(TokenType::Alphabet, val);
                     }
-                } while (true);
+
+                    char* val = new char[4];
+                    val[0] = *symbol;
+                    val[1] = '-';
+                    val[2] = *fSymbol2;
+                    val[3] = 0;
+                    return new Token(TokenType::AlphabetRange, val);
+                }
 
                 break;
             }
@@ -100,6 +111,15 @@ namespace RegExp
         }
 
         return this->expr->c_str() + (this->currentPosition++);
+    }
+
+    const char * Lexer::getForwardChar(int delta)
+    {
+        if (this->currentPosition + delta >= this->expr->length()) {
+            return nullptr;
+        }
+
+        return this->expr->c_str() + this->currentPosition + delta;
     }
 
     void Lexer::switchToMode(StateMode newState)

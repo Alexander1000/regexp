@@ -13,6 +13,7 @@ namespace RegExp
         EndOfLine, // $
         InvertAlphabet, // ^ (context: [^abc])
         Alphabet, // context: [abc]
+        AlphabetRange, // context: [a-z]
         AnySymbol, // .
         Whitespace, // \s
         Match, // similar alphabet, but full match

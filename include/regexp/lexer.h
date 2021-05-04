@@ -28,6 +28,7 @@ namespace RegExp
 
         Token* getNextToken();
         const char* getNextChar();
+        const char* getForwardChar(int delta);
 
         void switchToMode(StateMode);
         void switchToPreviousMode();
