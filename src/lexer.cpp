@@ -56,7 +56,8 @@ namespace RegExp
                     this->switchToMode(StateMode::SquareBlockSelect);
                     return new Token(TokenType::SquareBracketOpen, val);
                 }
-                break;
+
+                throw LexerException();
             }
             case StateMode::SquareBlockSelect: {
                 if (*symbol == ']') {
@@ -99,7 +100,7 @@ namespace RegExp
                     return new Token(TokenType::AlphabetRange, val);
                 }
 
-                break;
+                throw LexerException();
             }
         }
 

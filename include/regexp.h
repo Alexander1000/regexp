@@ -4,5 +4,6 @@
 #include <regexp/expression.h>
 #include <regexp/lexer.h>
 #include <regexp/token.h>
+#include <regexp/exception.h>
 
 #endif
