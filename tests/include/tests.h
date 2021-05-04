@@ -11,7 +11,7 @@ namespace RegExpTests
     void assertEquals(CppUnitTest::TestCase* t, RegExp::TokenType expectedTokenType, RegExp::TokenType actualTokenType);
 
     // test cases
-    CppUnitTest::TestCase* testCase01();
+    CppUnitTest::TestCase* testLexerMatchTokensCase01();
 }
 
 #endif

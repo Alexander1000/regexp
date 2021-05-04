@@ -3,9 +3,9 @@
 
 namespace RegExpTests
 {
-    CppUnitTest::TestCase *testCase01()
+    CppUnitTest::TestCase *testLexerMatchTokensCase01()
     {
-        auto t = new CppUnitTest::TestCase("001-simple-test");
+        auto t = new CppUnitTest::TestCase("testLexerMatchTokensCase01");
         t->printTitle();
 
         RegExp::Lexer lexer("[a-z]+");
