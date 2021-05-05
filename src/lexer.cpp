@@ -200,7 +200,54 @@ namespace RegExp
             }
 
             case StateMode::QuantifierMode: {
-                break;
+                if (*symbol == 0x20) {
+                    do {
+                        symbol = this->getNextChar();
+                    } while(symbol != nullptr && *symbol == 0x20);
+
+                    if (symbol == nullptr) {
+                        return nullptr;
+                    }
+                }
+
+                if (*symbol == ',') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    return new Token(TokenType::QuantifierDelimiter, val);
+                }
+
+                if (*symbol == '}') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    this->switchToPreviousMode();
+                    return new Token(TokenType::QuantifierClose, val);
+                }
+
+                int startPos = this->currentPosition - 1, stopPos = 0;
+                do {
+                    if (*symbol >= '0' && *symbol <= '9') {
+                        stopPos = this->currentPosition;
+                    }
+
+                    symbol = this->getNextChar();
+                    if (symbol == nullptr) {
+                        break;
+                    }
+                } while (true);
+
+                if (stopPos > startPos) {
+                    int size = stopPos - startPos + 1;
+                    char* val = new char[size];
+                    for (int i = 0; i < size; i++) {
+                        val[i] = this->expr->c_str()[startPos + i];
+                    }
+                    val[size - 1] = 0;
+                    return new Token(TokenType::QuantifierNumber, val);
+                }
+
+                throw LexerException();
             }
         }
 

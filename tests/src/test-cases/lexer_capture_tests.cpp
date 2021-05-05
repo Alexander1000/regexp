@@ -3,7 +3,8 @@
 
 namespace RegExpTests
 {
-    CppUnitTest::TestCase *testLexerMatchTokensCaptureCase01() {
+    CppUnitTest::TestCase *testLexerMatchTokensCaptureCase01()
+    {
         auto t = new CppUnitTest::TestCase("testLexerMatchTokensCaptureCase01: ^H(e|a)llo world!?");
         t->printTitle();
 
