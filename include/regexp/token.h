@@ -20,9 +20,8 @@ namespace RegExp
         QuantifierOpen, // {
         QuantifierClose, // }
         // complex quantifier
-        QuantifierFrom, // context: [a-z]{n,m}
+        QuantifierNumber, // context: [a-z]{n,m}
         QuantifierDelimiter, // context: [a-z]{n,m}
-        QuantifierTo, // context: [a-z]{n,m}
         OneOfVariant, // context: (apple|banana)
     };
 
