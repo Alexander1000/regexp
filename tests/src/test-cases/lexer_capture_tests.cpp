@@ -11,7 +11,7 @@ namespace RegExpTests
         RegExp::Lexer lexer("^H(e|a)l{2}o world!?");
         auto tokens = lexer.parseTokens();
 
-        CppUnitTest::assertEquals(t, 19, tokens->size());
+        CppUnitTest::assertEquals(t, 20, tokens->size());
 
         auto tokenIt = tokens->begin();
         RegExpTests::assertEquals(t, RegExp::TokenType::StartOfLine, (*tokenIt)->getType());

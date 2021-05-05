@@ -235,6 +235,11 @@ namespace RegExp
                     if (symbol == nullptr) {
                         break;
                     }
+
+                    if (*symbol < '0' || *symbol > '9') {
+                        this->currentPosition--;
+                        break;
+                    }
                 } while (true);
 
                 if (stopPos > startPos) {
