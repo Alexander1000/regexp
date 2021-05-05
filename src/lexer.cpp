@@ -130,6 +130,13 @@ namespace RegExp
                     return new Token(TokenType::CaptureClose, val);
                 }
 
+                if (*symbol == '|') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    return new Token(TokenType::OneOfVariant, val);
+                }
+
                 throw LexerException();
             }
         }

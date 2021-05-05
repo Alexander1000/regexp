@@ -23,6 +23,7 @@ namespace RegExp
         QuantifierFrom, // context: [a-z]{n,m}
         QuantifierDelimiter, // context: [a-z]{n,m}
         QuantifierTo, // context: [a-z]{n,m}
+        OneOfVariant, // context: (apple|banana)
     };
 
     class Token
