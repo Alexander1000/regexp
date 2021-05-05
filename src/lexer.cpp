@@ -42,6 +42,13 @@ namespace RegExp
 
         switch (this->state) {
             case StateMode::Main: {
+                if (*symbol == '^') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    return new Token(TokenType::StartOfLine, val);
+                }
+
                 if (*symbol == '?' || *symbol == '+' || *symbol == '*') {
                     char* val = new char[2];
                     val[0] = *symbol;

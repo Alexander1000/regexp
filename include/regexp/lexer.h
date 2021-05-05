@@ -11,6 +11,7 @@ namespace RegExp
         Main,
         SquareBlockSelect,
         Capture,
+        QuantifierMode,
     };
 
     class Lexer
