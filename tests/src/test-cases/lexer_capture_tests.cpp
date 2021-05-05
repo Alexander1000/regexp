@@ -26,7 +26,7 @@ namespace RegExpTests
         CppUnitTest::assertEquals(t, "(", (*tokenIt)->getData());
 
         tokenIt++;
-        RegExpTests::assertEquals(t, RegExp::TokenType::Alphabet, (*tokenIt)->getType());
+        RegExpTests::assertEquals(t, RegExp::TokenType::Match, (*tokenIt)->getType());
         CppUnitTest::assertEquals(t, "e", (*tokenIt)->getData());
 
         tokenIt++;
@@ -34,8 +34,12 @@ namespace RegExpTests
         CppUnitTest::assertEquals(t, "|", (*tokenIt)->getData());
 
         tokenIt++;
-        RegExpTests::assertEquals(t, RegExp::TokenType::Alphabet, (*tokenIt)->getType());
+        RegExpTests::assertEquals(t, RegExp::TokenType::Match, (*tokenIt)->getType());
         CppUnitTest::assertEquals(t, "a", (*tokenIt)->getData());
+
+        tokenIt++;
+        RegExpTests::assertEquals(t, RegExp::TokenType::CaptureClose, (*tokenIt)->getType());
+        CppUnitTest::assertEquals(t, ")", (*tokenIt)->getData());
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::TokenType::Match, (*tokenIt)->getType());
