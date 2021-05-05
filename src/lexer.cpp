@@ -72,7 +72,10 @@ namespace RegExp
                     return new Token(TokenType::CaptureOpen, val);
                 }
 
-                throw LexerException();
+                char* val = new char[2];
+                val[0] = *symbol;
+                val[1] = 0;
+                return new Token(TokenType::Match, val);
             }
             case StateMode::SquareBlockSelect: {
                 if (*symbol == ']') {
@@ -122,6 +125,36 @@ namespace RegExp
                 return new Token(TokenType::Alphabet, val);
             }
             case StateMode::Capture: {
+                if (*symbol == '?' || *symbol == '+' || *symbol == '*') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    return new Token(TokenType::Quantifier, val);
+                }
+
+                if (*symbol == '[') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    this->switchToMode(StateMode::SquareBlockSelect);
+                    return new Token(TokenType::SquareBracketOpen, val);
+                }
+
+                if (*symbol == '.') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    return new Token(TokenType::AnySymbol, val);
+                }
+
+                if (*symbol == '(') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    this->switchToMode(StateMode::Capture);
+                    return new Token(TokenType::CaptureOpen, val);
+                }
+
                 if (*symbol == ')') {
                     char* val = new char[2];
                     val[0] = *symbol;
@@ -137,7 +170,10 @@ namespace RegExp
                     return new Token(TokenType::OneOfVariant, val);
                 }
 
-                throw LexerException();
+                char* val = new char[2];
+                val[0] = *symbol;
+                val[1] = 0;
+                return new Token(TokenType::Match, val);
             }
         }
 
