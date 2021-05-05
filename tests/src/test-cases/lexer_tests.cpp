@@ -5,7 +5,7 @@ namespace RegExpTests
 {
     CppUnitTest::TestCase *testLexerMatchTokensCase01()
     {
-        auto t = new CppUnitTest::TestCase("testLexerMatchTokensCase01");
+        auto t = new CppUnitTest::TestCase("testLexerMatchTokensCase01: [a-z]+");
         t->printTitle();
 
         RegExp::Lexer lexer("[a-z]+");
@@ -35,7 +35,7 @@ namespace RegExpTests
 
     CppUnitTest::TestCase *testLexerMatchTokensCase02()
     {
-        auto t = new CppUnitTest::TestCase("testLexerMatchTokensCase02");
+        auto t = new CppUnitTest::TestCase("testLexerMatchTokensCase02: [abc-]?");
         t->printTitle();
 
         RegExp::Lexer lexer("[abc-]?");
@@ -77,7 +77,7 @@ namespace RegExpTests
 
     CppUnitTest::TestCase *testLexerMatchTokensCase03()
     {
-        auto t = new CppUnitTest::TestCase("testLexerMatchTokensCase03");
+        auto t = new CppUnitTest::TestCase("testLexerMatchTokensCase03: [^abc-e^]*");
         t->printTitle();
 
         RegExp::Lexer lexer("[^abc-e^]*");
