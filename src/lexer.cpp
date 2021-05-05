@@ -79,6 +79,14 @@ namespace RegExp
                     return new Token(TokenType::CaptureOpen, val);
                 }
 
+                if (*symbol == '{') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    this->switchToMode(StateMode::QuantifierMode);
+                    return new Token(TokenType::QuantifierOpen, val);
+                }
+
                 char* val = new char[2];
                 val[0] = *symbol;
                 val[1] = 0;
@@ -177,10 +185,22 @@ namespace RegExp
                     return new Token(TokenType::OneOfVariant, val);
                 }
 
+                if (*symbol == '{') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    this->switchToMode(StateMode::QuantifierMode);
+                    return new Token(TokenType::QuantifierOpen, val);
+                }
+
                 char* val = new char[2];
                 val[0] = *symbol;
                 val[1] = 0;
                 return new Token(TokenType::Match, val);
+            }
+
+            case StateMode::QuantifierMode: {
+                break;
             }
         }
 
