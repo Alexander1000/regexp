@@ -57,6 +57,21 @@ namespace RegExp
                     return new Token(TokenType::SquareBracketOpen, val);
                 }
 
+                if (*symbol == '.') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    return new Token(TokenType::AnySymbol, val);
+                }
+
+                if (*symbol == '(') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    this->switchToMode(StateMode::Capture);
+                    return new Token(TokenType::CaptureOpen, val);
+                }
+
                 throw LexerException();
             }
             case StateMode::SquareBlockSelect: {
@@ -105,6 +120,17 @@ namespace RegExp
                 val[0] = *symbol;
                 val[1] = 0;
                 return new Token(TokenType::Alphabet, val);
+            }
+            case StateMode::Capture: {
+                if (*symbol == ')') {
+                    char* val = new char[2];
+                    val[0] = *symbol;
+                    val[1] = 0;
+                    this->switchToPreviousMode();
+                    return new Token(TokenType::CaptureClose, val);
+                }
+
+                throw LexerException();
             }
         }
 

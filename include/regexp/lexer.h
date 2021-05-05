@@ -10,6 +10,7 @@ namespace RegExp
     enum StateMode {
         Main,
         SquareBlockSelect,
+        Capture,
     };
 
     class Lexer
