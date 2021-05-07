@@ -10,6 +10,8 @@ int main() {
 
     testSuite.addTestCase(RegExpTests::testLexerMatchTokensCaptureCase01());
 
+    testSuite.addTestCase(RegExpTests::testSyntaxTestCase01());
+
     testSuite.printTotal();
 
     return 0;
