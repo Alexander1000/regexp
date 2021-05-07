@@ -1,16 +1,20 @@
-alphabet [t:alphabet+]
-alphabet [t:alphabetRange+]
-alphabetScope [t:squareBracketOpen t:invertAlphabet? s:alphabet+ t:squareBracketClose]
+# quantifier rules
 quantifier [t:quantifier]
 quantifier [t:quantifierOpen t:quantifierNumber t:quantifierClose]
 quantifier [t:quantifierOpen t:quantifierNumber t:quantifierDelimiter t:quantifierNumber? t:quantifierClose]
-alphabetQuantified [s:alphabetScope s:quantifier]
-matchQuantified [t:match s:quantifier]
-match [t:match+]
+
+# alphabet rules
+alphabet [t:alphabet+]
+alphabet [t:alphabetRange+]
+alphabetScope [t:squareBracketOpen t:invertAlphabet? s:alphabet+ t:squareBracketClose s:quantifier?]
+
+# match rules
+matchQuantified [t:match s:quantifier?]
 match [s:matchQuantified+]
-capture [t:captureOpen s:expr t:captureClose]
-captureQuantified [s:capture s:quantifier]
-expr [s:alphabetQuantified]
+
+# captures
+capture [t:captureOpen s:expr t:captureClose s:quantifier?]
+
+# common rules
 expr [s:alphabetScope]
-expr [s:captureQuantified]
 expr [s:capture]
