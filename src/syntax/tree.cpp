@@ -26,30 +26,30 @@ namespace RegExp::Syntax
         rule02->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("quantifierOpen")));
         rule02->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("quantifierNumber")));
         rule02->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("quantifierDelimiter")));
-        auto q02 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::ZeroOrOneMatchType);
-        rule02->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("quantifierNumber"), q02));
+        auto q00 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::ZeroOrOneMatchType);
+        rule02->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("quantifierNumber"), q00));
         rule02->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("quantifierClose")));
         this->rules->push_back(rule02);
 
         auto rule03 = new SyntaxTree::Syntax::Rule("alphabet");
-        auto q03 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::OneOrMoreMatchType);
-        rule03->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("alphabet"), q03));
+        auto q01 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::OneOrMoreMatchType);
+        rule03->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("alphabet"), q01));
         this->rules->push_back(rule03);
 
         auto rule04 = new SyntaxTree::Syntax::Rule("alphabet");
-        auto q04 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::OneOrMoreMatchType);
-        rule04->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("alphabetRange"), q04));
+        auto q02 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::OneOrMoreMatchType);
+        rule04->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("alphabetRange"), q02));
         this->rules->push_back(rule04);
 
         auto rule05 = new SyntaxTree::Syntax::Rule("alphabetScope");
         rule05->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("squareBracketOpen")));
-        auto q05 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::ZeroOrOneMatchType);
-        rule05->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("invertAlphabet"), q05));
-        auto q051 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::OneOrMoreMatchType);
-        rule05->addMatch(new SyntaxTree::Syntax::RuleMatch("alphabet", q051));
+        auto q03 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::ZeroOrOneMatchType);
+        rule05->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("invertAlphabet"), q03));
+        auto q04 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::OneOrMoreMatchType);
+        rule05->addMatch(new SyntaxTree::Syntax::RuleMatch("alphabet", q04));
         rule05->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("squareBracketClose")));
-        auto q052 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::ZeroOrOneMatchType);
-        rule05->addMatch(new SyntaxTree::Syntax::RuleMatch("quantifier", q052));
+        auto q05 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::ZeroOrOneMatchType);
+        rule05->addMatch(new SyntaxTree::Syntax::RuleMatch("quantifier", q05));
         this->rules->push_back(rule05);
 
         auto rule06 = new SyntaxTree::Syntax::Rule("matchQuantified");
@@ -79,8 +79,8 @@ namespace RegExp::Syntax
         rule10->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("captureOpen")));
         rule10->addMatch(new SyntaxTree::Syntax::RuleMatch("expr"));
         rule10->addMatch(new SyntaxTree::Syntax::RuleMatch(this->tokenMap->getType("captureClose")));
-        auto q10 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::ZeroOrOneMatchType);
-        rule10->addMatch(new SyntaxTree::Syntax::RuleMatch("quantifier", q10));
+        auto q08 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::ZeroOrOneMatchType);
+        rule10->addMatch(new SyntaxTree::Syntax::RuleMatch("quantifier", q08));
         this->rules->push_back(rule10);
 
         auto rule11 = new SyntaxTree::Syntax::Rule("expr");
