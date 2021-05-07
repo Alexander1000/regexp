@@ -15,83 +15,83 @@ namespace RegExpTests
 
         auto tokenIt = tokens->begin();
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::StartOfLine, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "^", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "^", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "H", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "H", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::CaptureOpen, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "(", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "(", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "e", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "e", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::OneOfVariant, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "|", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "|", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "a", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "a", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::CaptureClose, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, ")", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, ")", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "l", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "l", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::QuantifierOpen, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "{", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "{", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::QuantifierNumber, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "2", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "2", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::QuantifierClose, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "}", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "}", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "o", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "o", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, " ", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, " ", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "w", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "w", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "o", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "o", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "r", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "r", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "l", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "l", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "d", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "d", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Match, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "!", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "!", *tokenIt);
 
         tokenIt++;
         RegExpTests::assertEquals(t, RegExp::Token::TokenType::Quantifier, (*tokenIt)->getType());
-        CppUnitTest::assertEquals(t, "?", (*tokenIt)->getData());
+        RegExpTests::assertEqualsTokenValue(t, "?", *tokenIt);
 
         t->finish();
         return t;

@@ -4,6 +4,7 @@
 #include <list>
 #include <stack>
 #include <regexp/token.h>
+#include <syntax-tree-lib.h>
 
 namespace RegExp
 {
@@ -19,7 +20,7 @@ namespace RegExp
     public:
         Lexer(std::string*);
         Lexer(const char*);
-        std::list<Token::Token*>* parseTokens();
+        std::list<SyntaxTree::Token::Token*>* parseTokens();
 
     private:
         StateMode state;
@@ -30,7 +31,7 @@ namespace RegExp
         std::string* expr;
         int currentPosition;
 
-        Token::Token* getNextToken();
+        SyntaxTree::Token::Token* getNextToken();
         const char* getNextChar();
         const char* getForwardChar(int delta);
 

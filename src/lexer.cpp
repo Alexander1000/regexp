@@ -20,9 +20,9 @@ namespace RegExp
         this->lastSymbol = 0;
     }
 
-    std::list<Token::Token*>* Lexer::parseTokens()
+    std::list<SyntaxTree::Token::Token*>* Lexer::parseTokens()
     {
-        auto tokens = new std::list<Token::Token*>;
+        auto tokens = new std::list<SyntaxTree::Token::Token*>;
         while (true) {
             auto token = this->getNextToken();
             if (token == nullptr) {
@@ -33,7 +33,7 @@ namespace RegExp
         return tokens;
     }
 
-    Token::Token* Lexer::getNextToken()
+    SyntaxTree::Token::Token* Lexer::getNextToken()
     {
         const char* symbol = this->getNextChar();
         if (symbol == nullptr) {

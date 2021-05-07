@@ -4,11 +4,13 @@
 #include <string>
 #include <cpp-unit-test.h>
 #include <regexp.h>
+#include <syntax-tree-lib.h>
 
 namespace RegExpTests
 {
     // asserts
     void assertEquals(CppUnitTest::TestCase* t, RegExp::Token::TokenType expectedTokenType, int actualTokenType);
+    void assertEqualsTokenValue(CppUnitTest::TestCase* t, const char* expectedResult, SyntaxTree::Token::Token* token);
 
     // test cases
     CppUnitTest::TestCase* testLexerMatchTokensCase01();

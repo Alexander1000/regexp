@@ -8,6 +8,11 @@ namespace RegExpTests
         auto t = new CppUnitTest::TestCase("testSyntaxTestCase01: [a-z]+");
         t->printTitle();
 
+        RegExp::Lexer lexer("[a-z]+");
+        RegExp::Syntax::Tree tree;
+
+        // tree.parse(lexer.parseTokens());
+
         t->finish();
         return t;
     }
