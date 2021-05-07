@@ -38,8 +38,12 @@ include_directories(/usr/local/include)
 find_library(IO_BUFFER libio-buffer.a)
 message(STATUS "Found io-buffer library: ${IO_BUFFER}")
 
+find_library(SYNTAX_TREE_LIB libsyntax-tree-lib.a)
+message(STATUS "Found syntax-tree library: ${SYNTAX_TREE_LIB}")
+
 target_link_libraries(${PROJECT_NAME}
     ${IO_BUFFER}
+    ${SYNTAX_TREE_LIB}
 )
 
 install (TARGETS ${PROJECT_NAME}
@@ -83,4 +87,5 @@ add_executable(
 target_link_libraries(${PROJECT_NAME}
     ${CPP_UNIT_TEST}
     ${IO_BUFFER}
+    ${SYNTAX_TREE_LIB}
 )
