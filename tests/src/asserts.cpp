@@ -2,7 +2,7 @@
 
 namespace RegExpTests
 {
-    void assertEquals(CppUnitTest::TestCase* t, RegExp::Token::TokenType expectedTokenType, RegExp::Token::TokenType actualTokenType)
+    void assertEquals(CppUnitTest::TestCase* t, RegExp::Token::TokenType expectedTokenType, int actualTokenType)
     {
         t->increment();
         if (expectedTokenType != actualTokenType) {

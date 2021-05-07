@@ -1,6 +1,8 @@
 #ifndef H_REGEXP_TOKEN_INCLUDE
 #define H_REGEXP_TOKEN_INCLUDE
 
+#include <syntax-tree-lib.h>
+
 namespace RegExp::Token
 {
     enum TokenType {
@@ -25,11 +27,11 @@ namespace RegExp::Token
         OneOfVariant, // context: (apple|banana)
     };
 
-    class Token
+    class Token : public SyntaxTree::Token::Token
     {
     public:
         Token(TokenType, const char*);
-        TokenType getType();
+        int getType();
         const char* getData();
     private:
         TokenType type;
