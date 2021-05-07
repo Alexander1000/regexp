@@ -12,9 +12,15 @@ alphabetScope [t:squareBracketOpen t:invertAlphabet? s:alphabet+ t:squareBracket
 matchQuantified [t:match s:quantifier?]
 match [s:matchQuantified+]
 
+# one of
+oneof [s:match t:oneof s:match]
+oneof [s:expr t:oneof s:expr]
+
 # captures
 capture [t:captureOpen s:expr t:captureClose s:quantifier?]
 
 # common rules
 expr [s:alphabetScope]
 expr [s:capture]
+expr [s:match]
+expr [s:oneof]
