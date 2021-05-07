@@ -10,8 +10,11 @@ namespace RegExpTests
 
         RegExp::Lexer lexer("[a-z]+");
         RegExp::Syntax::Tree tree;
+        tree.initializeDefaults();
 
-        // tree.parse(lexer.parseTokens());
+        auto syntaxTree = tree.parse(lexer.parseTokens());
+
+        CppUnitTest::assertNotNull(t, syntaxTree);
 
         t->finish();
         return t;
