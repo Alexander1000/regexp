@@ -8,6 +8,7 @@ set(REGEXP_SOURCES
     src/lexer.cpp
     src/token/token.cpp
     src/token/token_map.cpp
+    src/syntax/tree.cpp
 )
 
 if(NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)
