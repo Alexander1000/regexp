@@ -7,6 +7,7 @@ set(REGEXP_SOURCES
     src/regexp.cpp
     src/lexer.cpp
     src/token.cpp
+    src/token/quantifier.cpp
 )
 
 if(NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)

@@ -1,7 +1,10 @@
 #ifndef H_REGEXP_TOKEN_INCLUDE
 #define H_REGEXP_TOKEN_INCLUDE
 
-namespace RegExp
+#include <io-buffer.h>
+#include <syntax-tree-lib.h>
+
+namespace RegExp::Token
 {
     enum TokenType {
         Quantifier, // ?, +, *
@@ -25,15 +28,11 @@ namespace RegExp
         OneOfVariant, // context: (apple|banana)
     };
 
-    class Token
-    {
+    class Quantifier : public SyntaxTree::Token::Token {
     public:
-        Token(TokenType, const char*);
-        TokenType getType();
-        const char* getData();
-    private:
-        TokenType type;
-        const char* data;
+        Quantifier(int line, int column, IOBuffer::IOReader *reader);
+
+        int getType() final;
     };
 }
 

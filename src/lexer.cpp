@@ -1,4 +1,6 @@
 #include <regexp.h>
+#include <io-buffer.h>
+#include <syntax-tree-lib.h>
 
 namespace RegExp
 {
@@ -20,9 +22,9 @@ namespace RegExp
         this->lastSymbol = 0;
     }
 
-    std::list<Token*>* Lexer::parseTokens()
+    std::list<SyntaxTree::Token::Token*>* Lexer::parseTokens()
     {
-        auto tokens = new std::list<Token*>;
+        auto tokens = new std::list<SyntaxTree::Token::Token*>;
         while (true) {
             auto token = this->getNextToken();
             if (token == nullptr) {
@@ -33,7 +35,7 @@ namespace RegExp
         return tokens;
     }
 
-    Token* Lexer::getNextToken()
+    SyntaxTree::Token::Token* Lexer::getNextToken()
     {
         const char* symbol = this->getNextChar();
         if (symbol == nullptr) {
@@ -50,10 +52,9 @@ namespace RegExp
                 }
 
                 if (*symbol == '?' || *symbol == '+' || *symbol == '*') {
-                    char* val = new char[2];
-                    val[0] = *symbol;
-                    val[1] = 0;
-                    return new Token(TokenType::Quantifier, val);
+                    auto ioWriter = new IOBuffer::IOMemoryBuffer(2);
+                    ioWriter->write((char*) symbol, 1);
+                    return new Token::Quantifier(0, 0, ioWriter);
                 }
 
                 if (*symbol == '[') {
