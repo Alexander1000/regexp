@@ -37,6 +37,12 @@ namespace RegExp::Token
         TokenType type;
         const char* data;
     };
+
+    class TokenMap : public SyntaxTree::Token::TokenMap
+    {
+    public:
+        TokenMap();
+    };
 }
 
 #endif
