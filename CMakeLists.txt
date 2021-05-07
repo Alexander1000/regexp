@@ -35,6 +35,13 @@ target_include_directories(${PROJECT_NAME} PRIVATE src)
 
 include_directories(/usr/local/include)
 
+find_library(IO_BUFFER libio-buffer.a)
+message(STATUS "Found io-buffer library: ${IO_BUFFER}")
+
+target_link_libraries(${PROJECT_NAME}
+    ${IO_BUFFER}
+)
+
 install (TARGETS ${PROJECT_NAME}
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
@@ -75,4 +82,5 @@ add_executable(
 
 target_link_libraries(${PROJECT_NAME}
     ${CPP_UNIT_TEST}
+    ${IO_BUFFER}
 )
