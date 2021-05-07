@@ -1,6 +1,6 @@
 #include <regexp.h>
 
-namespace RegExp
+namespace RegExp::Token
 {
     Token::Token(TokenType type, const char* data)
     {

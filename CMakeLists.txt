@@ -6,7 +6,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(REGEXP_SOURCES
     src/regexp.cpp
     src/lexer.cpp
-    src/token.cpp
+        src/token/token.cpp
 )
 
 if(NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)

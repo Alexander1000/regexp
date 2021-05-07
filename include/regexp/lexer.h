@@ -19,7 +19,7 @@ namespace RegExp
     public:
         Lexer(std::string*);
         Lexer(const char*);
-        std::list<Token*>* parseTokens();
+        std::list<Token::Token*>* parseTokens();
 
     private:
         StateMode state;
@@ -30,7 +30,7 @@ namespace RegExp
         std::string* expr;
         int currentPosition;
 
-        Token* getNextToken();
+        Token::Token* getNextToken();
         const char* getNextChar();
         const char* getForwardChar(int delta);
 

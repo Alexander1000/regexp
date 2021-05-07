@@ -1,7 +1,7 @@
 #ifndef H_REGEXP_TOKEN_INCLUDE
 #define H_REGEXP_TOKEN_INCLUDE
 
-namespace RegExp
+namespace RegExp::Token
 {
     enum TokenType {
         Quantifier, // ?, +, *

@@ -20,9 +20,9 @@ namespace RegExp
         this->lastSymbol = 0;
     }
 
-    std::list<Token*>* Lexer::parseTokens()
+    std::list<Token::Token*>* Lexer::parseTokens()
     {
-        auto tokens = new std::list<Token*>;
+        auto tokens = new std::list<Token::Token*>;
         while (true) {
             auto token = this->getNextToken();
             if (token == nullptr) {
@@ -33,7 +33,7 @@ namespace RegExp
         return tokens;
     }
 
-    Token* Lexer::getNextToken()
+    Token::Token* Lexer::getNextToken()
     {
         const char* symbol = this->getNextChar();
         if (symbol == nullptr) {
@@ -46,14 +46,14 @@ namespace RegExp
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
-                    return new Token(TokenType::StartOfLine, val);
+                    return new Token::Token(Token::TokenType::StartOfLine, val);
                 }
 
                 if (*symbol == '?' || *symbol == '+' || *symbol == '*') {
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
-                    return new Token(TokenType::Quantifier, val);
+                    return new Token::Token(Token::TokenType::Quantifier, val);
                 }
 
                 if (*symbol == '[') {
@@ -61,14 +61,14 @@ namespace RegExp
                     val[0] = *symbol;
                     val[1] = 0;
                     this->switchToMode(StateMode::SquareBlockSelect);
-                    return new Token(TokenType::SquareBracketOpen, val);
+                    return new Token::Token(Token::TokenType::SquareBracketOpen, val);
                 }
 
                 if (*symbol == '.') {
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
-                    return new Token(TokenType::AnySymbol, val);
+                    return new Token::Token(Token::TokenType::AnySymbol, val);
                 }
 
                 if (*symbol == '(') {
@@ -76,7 +76,7 @@ namespace RegExp
                     val[0] = *symbol;
                     val[1] = 0;
                     this->switchToMode(StateMode::Capture);
-                    return new Token(TokenType::CaptureOpen, val);
+                    return new Token::Token(Token::TokenType::CaptureOpen, val);
                 }
 
                 if (*symbol == '{') {
@@ -84,13 +84,13 @@ namespace RegExp
                     val[0] = *symbol;
                     val[1] = 0;
                     this->switchToMode(StateMode::QuantifierMode);
-                    return new Token(TokenType::QuantifierOpen, val);
+                    return new Token::Token(Token::TokenType::QuantifierOpen, val);
                 }
 
                 char* val = new char[2];
                 val[0] = *symbol;
                 val[1] = 0;
-                return new Token(TokenType::Match, val);
+                return new Token::Token(Token::TokenType::Match, val);
             }
             case StateMode::SquareBlockSelect: {
                 if (*symbol == ']') {
@@ -98,14 +98,14 @@ namespace RegExp
                     val[0] = *symbol;
                     val[1] = 0;
                     this->switchToPreviousMode();
-                    return new Token(TokenType::SquareBracketClose, val);
+                    return new Token::Token(Token::TokenType::SquareBracketClose, val);
                 }
 
                 if (*symbol == '^' && this->lastSymbol == '[') {
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
-                    return new Token(TokenType::InvertAlphabet, val);
+                    return new Token::Token(Token::TokenType::InvertAlphabet, val);
                 }
 
                 const char* fSymbol = this->getForwardChar(0);
@@ -113,7 +113,7 @@ namespace RegExp
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
-                    return new Token(TokenType::Alphabet, val);
+                    return new Token::Token(Token::TokenType::Alphabet, val);
                 }
 
                 if (*fSymbol == '-') {
@@ -122,7 +122,7 @@ namespace RegExp
                         char* val = new char[2];
                         val[0] = *symbol;
                         val[1] = 0;
-                        return new Token(TokenType::Alphabet, val);
+                        return new Token::Token(Token::TokenType::Alphabet, val);
                     }
 
                     char* val = new char[4];
@@ -131,20 +131,20 @@ namespace RegExp
                     val[2] = *fSymbol2;
                     val[3] = 0;
                     this->currentPosition += 2;
-                    return new Token(TokenType::AlphabetRange, val);
+                    return new Token::Token(Token::TokenType::AlphabetRange, val);
                 }
 
                 char* val = new char[2];
                 val[0] = *symbol;
                 val[1] = 0;
-                return new Token(TokenType::Alphabet, val);
+                return new Token::Token(Token::TokenType::Alphabet, val);
             }
             case StateMode::Capture: {
                 if (*symbol == '?' || *symbol == '+' || *symbol == '*') {
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
-                    return new Token(TokenType::Quantifier, val);
+                    return new Token::Token(Token::TokenType::Quantifier, val);
                 }
 
                 if (*symbol == '[') {
@@ -152,14 +152,14 @@ namespace RegExp
                     val[0] = *symbol;
                     val[1] = 0;
                     this->switchToMode(StateMode::SquareBlockSelect);
-                    return new Token(TokenType::SquareBracketOpen, val);
+                    return new Token::Token(Token::TokenType::SquareBracketOpen, val);
                 }
 
                 if (*symbol == '.') {
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
-                    return new Token(TokenType::AnySymbol, val);
+                    return new Token::Token(Token::TokenType::AnySymbol, val);
                 }
 
                 if (*symbol == '(') {
@@ -167,7 +167,7 @@ namespace RegExp
                     val[0] = *symbol;
                     val[1] = 0;
                     this->switchToMode(StateMode::Capture);
-                    return new Token(TokenType::CaptureOpen, val);
+                    return new Token::Token(Token::TokenType::CaptureOpen, val);
                 }
 
                 if (*symbol == ')') {
@@ -175,14 +175,14 @@ namespace RegExp
                     val[0] = *symbol;
                     val[1] = 0;
                     this->switchToPreviousMode();
-                    return new Token(TokenType::CaptureClose, val);
+                    return new Token::Token(Token::TokenType::CaptureClose, val);
                 }
 
                 if (*symbol == '|') {
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
-                    return new Token(TokenType::OneOfVariant, val);
+                    return new Token::Token(Token::TokenType::OneOfVariant, val);
                 }
 
                 if (*symbol == '{') {
@@ -190,13 +190,13 @@ namespace RegExp
                     val[0] = *symbol;
                     val[1] = 0;
                     this->switchToMode(StateMode::QuantifierMode);
-                    return new Token(TokenType::QuantifierOpen, val);
+                    return new Token::Token(Token::TokenType::QuantifierOpen, val);
                 }
 
                 char* val = new char[2];
                 val[0] = *symbol;
                 val[1] = 0;
-                return new Token(TokenType::Match, val);
+                return new Token::Token(Token::TokenType::Match, val);
             }
 
             case StateMode::QuantifierMode: {
@@ -214,7 +214,7 @@ namespace RegExp
                     char* val = new char[2];
                     val[0] = *symbol;
                     val[1] = 0;
-                    return new Token(TokenType::QuantifierDelimiter, val);
+                    return new Token::Token(Token::TokenType::QuantifierDelimiter, val);
                 }
 
                 if (*symbol == '}') {
@@ -222,7 +222,7 @@ namespace RegExp
                     val[0] = *symbol;
                     val[1] = 0;
                     this->switchToPreviousMode();
-                    return new Token(TokenType::QuantifierClose, val);
+                    return new Token::Token(Token::TokenType::QuantifierClose, val);
                 }
 
                 int startPos = this->currentPosition - 1, stopPos = 0;
@@ -249,7 +249,7 @@ namespace RegExp
                         val[i] = this->expr->c_str()[startPos + i];
                     }
                     val[size - 1] = 0;
-                    return new Token(TokenType::QuantifierNumber, val);
+                    return new Token::Token(Token::TokenType::QuantifierNumber, val);
                 }
 
                 throw LexerException();
