@@ -30,9 +30,9 @@ namespace RegExpTests
         return t;
     }
 
-    CppUnitTest::TestCase* testPredicate_Invert_TestCase01()
+    CppUnitTest::TestCase* testPredicate_Negative_TestCase01()
     {
-        auto t = new CppUnitTest::TestCase("testPredicate_Invert_TestCase01: [!@#a-z*_0-9]");
+        auto t = new CppUnitTest::TestCase("testPredicate_Negative_TestCase01: [!@#a-z*_0-9]");
         t->printTitle();
 
         RegExp::Lexer lexer("[!@#a-z*_0-9]");
@@ -48,7 +48,7 @@ namespace RegExpTests
         } while (std::next(tokensIt) != tokens->end());
 
         auto pa = new RegExp::Predicate::Alphabet(testTokens);
-        auto p = new RegExp::Predicate::Invert(pa);
+        auto p = new RegExp::Predicate::Negative(pa);
         CppUnitTest::assertFalse(t, p->calc("alexander"));
         CppUnitTest::assertFalse(t, p->calc("alexander_1990"));
         CppUnitTest::assertFalse(t, p->calc("test_case#@123!"));

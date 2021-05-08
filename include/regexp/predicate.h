@@ -26,10 +26,10 @@ namespace RegExp::Predicate
         std::list<std::pair<char, char>*>* ranges;
     };
 
-    class Invert : public Predicate
+    class Negative : public Predicate
     {
     public:
-        Invert(Predicate*);
+        Negative(Predicate*);
         bool calc(const char *) override;
 
     private:

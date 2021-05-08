@@ -13,7 +13,7 @@ int main() {
     testSuite.addTestCase(RegExpTests::testSyntaxTestCase01());
 
     testSuite.addTestCase(RegExpTests::testPredicate_Alphabet_TestCase01());
-    testSuite.addTestCase(RegExpTests::testPredicate_Invert_TestCase01());
+    testSuite.addTestCase(RegExpTests::testPredicate_Negative_TestCase01());
 
     testSuite.printTotal();
 

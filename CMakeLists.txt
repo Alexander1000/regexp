@@ -11,7 +11,7 @@ set(REGEXP_SOURCES
     src/syntax/tree.cpp
     src/predicate/predicate.cpp
     src/predicate/alphabet.cpp
-    src/predicate/invert.cpp
+    src/predicate/negative.cpp
 )
 
 if(NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)
