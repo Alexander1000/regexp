@@ -6,5 +6,6 @@
 #include <regexp/token.h>
 #include <regexp/exception.h>
 #include <regexp/syntax.h>
+#include <regexp/predicate.h>
 
 #endif
