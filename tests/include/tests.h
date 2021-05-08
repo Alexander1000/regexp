@@ -20,6 +20,8 @@ namespace RegExpTests
     CppUnitTest::TestCase* testLexerMatchTokensCaptureCase01();
 
     CppUnitTest::TestCase* testSyntaxTestCase01();
+
+    CppUnitTest::TestCase* testPredicateTestCase01();
 }
 
 #endif
