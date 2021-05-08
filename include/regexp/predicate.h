@@ -25,6 +25,16 @@ namespace RegExp::Predicate
         std::list<char>* abc;
         std::list<std::pair<char, char>*>* ranges;
     };
+
+    class Invert : public Predicate
+    {
+    public:
+        Invert(Predicate*);
+        bool calc(const char *) override;
+
+    private:
+        Predicate* predicate;
+    };
 }
 
 #endif
