@@ -19,11 +19,16 @@ namespace RegExp::Predicate
     {
     public:
         Alphabet(std::list<SyntaxTree::Token::Token*>*);
+        Alphabet(std::list<SyntaxTree::Token::Token*>*, bool);
         bool calc(const char *) override;
 
     private:
         std::list<char>* abc;
         std::list<std::pair<char, char>*>* ranges;
+
+        void initialize(std::list<SyntaxTree::Token::Token*>*);
+
+        bool invert = false;
     };
 
     class Negative : public Predicate

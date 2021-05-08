@@ -7,7 +7,20 @@ namespace RegExp::Predicate
     {
         this->abc = new std::list<char>;
         this->ranges = new std::list<std::pair<char, char>*>;
+        this->invert = false;
+        this->initialize(tokens);
+    }
 
+    Alphabet::Alphabet(std::list<SyntaxTree::Token::Token*>* tokens, bool invert)
+    {
+        this->abc = new std::list<char>;
+        this->ranges = new std::list<std::pair<char, char>*>;
+        this->invert = invert;
+        this->initialize(tokens);
+    }
+
+    void Alphabet::initialize(std::list<SyntaxTree::Token::Token*>* tokens)
+    {
         for (auto & token : *tokens) {
             switch (token->getType()) {
                 case RegExp::Token::TokenType::Alphabet: {
