@@ -12,6 +12,7 @@ set(REGEXP_SOURCES
     src/predicate/predicate.cpp
     src/predicate/alphabet.cpp
     src/predicate/negative.cpp
+    src/predicate/oneof.cpp
 )
 
 if(NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)

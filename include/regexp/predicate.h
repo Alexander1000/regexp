@@ -40,6 +40,16 @@ namespace RegExp::Predicate
     private:
         Predicate* predicate;
     };
+
+    class OneOf : public Predicate
+    {
+    public:
+        OneOf(std::list<Predicate*>*);
+        bool calc(const char*) override;
+
+    private:
+        std::list<Predicate*>* predicates;
+    };
 }
 
 #endif
