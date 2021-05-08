@@ -9,6 +9,7 @@ set(REGEXP_SOURCES
     src/token/token.cpp
     src/token/token_map.cpp
     src/syntax/tree.cpp
+    src/predicate/predicate.cpp
 )
 
 if(NOT DEFINED CMAKE_INSTALL_INCLUDEDIR)
