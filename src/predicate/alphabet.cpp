@@ -36,6 +36,29 @@ namespace RegExp::Predicate
 
     bool Alphabet::calc(const char *text)
     {
+        for (int i = 0; i < strlen(text); i++) {
+            char curSymbol = text[i];
+            bool foundMatch = false;
+            for (auto & abcIt : *abc) {
+                if (curSymbol == abcIt) {
+                    foundMatch = true;
+                    break;
+                }
+            }
+            if (foundMatch) {
+                continue;
+            }
+            for (auto & rangeIt : *ranges) {
+                if (rangeIt->first >= curSymbol && rangeIt->second <= curSymbol) {
+                    foundMatch = true;
+                    break;
+                }
+            }
+
+            if (!foundMatch) {
+                return false;
+            }
+        }
         return true;
     }
 }
