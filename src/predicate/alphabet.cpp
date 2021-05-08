@@ -52,23 +52,26 @@ namespace RegExp::Predicate
         for (int i = 0; i < strlen(text); i++) {
             char curSymbol = text[i];
             bool foundMatch = false;
-            for (auto & abcIt : *abc) {
+            for (auto &abcIt : *abc) {
                 if (curSymbol == abcIt) {
                     foundMatch = true;
                     break;
                 }
             }
             if (foundMatch) {
+                if (this->invert) {
+                    return false;
+                }
                 continue;
             }
-            for (auto & rangeIt : *ranges) {
+            for (auto &rangeIt : *ranges) {
                 if (rangeIt->first <= curSymbol && rangeIt->second >= curSymbol) {
                     foundMatch = true;
                     break;
                 }
             }
 
-            if (!foundMatch) {
+            if ((!foundMatch && !this->invert) || (foundMatch && this->invert)) {
                 return false;
             }
         }
