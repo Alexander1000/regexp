@@ -49,7 +49,7 @@ namespace RegExp::Predicate
                 continue;
             }
             for (auto & rangeIt : *ranges) {
-                if (rangeIt->first >= curSymbol && rangeIt->second <= curSymbol) {
+                if (rangeIt->first <= curSymbol && rangeIt->second >= curSymbol) {
                     foundMatch = true;
                     break;
                 }

@@ -21,7 +21,7 @@ namespace RegExpTests
 
     CppUnitTest::TestCase* testSyntaxTestCase01();
 
-    CppUnitTest::TestCase* testPredicateTestCase01();
+    CppUnitTest::TestCase* testPredicate_Alphabet_TestCase01();
 }
 
 #endif
