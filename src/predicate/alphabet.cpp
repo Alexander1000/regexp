@@ -12,12 +12,14 @@ namespace RegExp::Predicate
             switch (token->getType()) {
                 case RegExp::Token::TokenType::Alphabet: {
                     char symbol;
+                    RESET_TOKEN_READER(token)
                     token->getReader()->read(&symbol, 1);
                     this->abc->push_back(symbol);
                     break;
                 }
                 case RegExp::Token::TokenType::AlphabetRange: {
                     auto symbol = new char[3];
+                    RESET_TOKEN_READER(token)
                     token->getReader()->read(symbol, 3);
                     auto range = new std::pair<char, char>();
                     range->first = symbol[0];
