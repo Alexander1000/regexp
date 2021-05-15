@@ -31,7 +31,21 @@ namespace RegExp::Expression
 
     std::list<RegExp::Predicate::Predicate*>* Expression::parseSyntaxTree(SyntaxTree::Syntax::SyntaxElement* tree)
     {
+        if (tree->getType() == SyntaxTree::Syntax::SyntaxElementType::SyntaxType) {
+            return Expression::parseSyntaxTree(tree->getElement());
+        }
+
         auto elements = new std::list<RegExp::Predicate::Predicate*>;
+
+        if (tree->getType() == SyntaxTree::Syntax::SyntaxElementType::TokenListType) {
+            auto treeElements = tree->getListElements();
+            for (auto & treeElement : *treeElements) {
+                if (RegExp::Syntax::isRule(treeElement, "expr")) {
+                    auto subElements = Expression::parseSyntaxTree(treeElement);
+                }
+            }
+        }
+
         return elements;
     }
 

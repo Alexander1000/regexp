@@ -9,6 +9,7 @@ set(REGEXP_SOURCES
     src/token/token.cpp
     src/token/token_map.cpp
     src/syntax/tree.cpp
+    src/syntax/is_rule.cpp
     src/predicate/predicate.cpp
     src/predicate/alphabet.cpp
     src/predicate/negative.cpp
