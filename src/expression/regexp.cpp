@@ -1,8 +1,9 @@
+#include <string>
 #include <list>
 #include <regexp.h>
 #include <syntax-tree-lib.h>
 
-namespace RegExp
+namespace RegExp::Expression
 {
     Expression::Expression(std::string* regexp)
     {
@@ -28,9 +29,9 @@ namespace RegExp
         this->predicates = Expression::parseSyntaxTree(syntaxTree);
     }
 
-    std::list<Predicate::Predicate*>* Expression::parseSyntaxTree(SyntaxTree::Syntax::SyntaxElement* tree)
+    std::list<RegExp::Predicate::Predicate*>* Expression::parseSyntaxTree(SyntaxTree::Syntax::SyntaxElement* tree)
     {
-        auto elements = new std::list<Predicate::Predicate*>;
+        auto elements = new std::list<RegExp::Predicate::Predicate*>;
         return elements;
     }
 

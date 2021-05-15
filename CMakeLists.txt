@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(REGEXP_SOURCES
-    src/regexp.cpp
+    src/expression/regexp.cpp
     src/lexer.cpp
     src/token/token.cpp
     src/token/token_map.cpp

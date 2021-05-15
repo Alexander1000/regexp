@@ -8,7 +8,7 @@ namespace RegExpTests
         auto t = new CppUnitTest::TestCase("testExpressionMatchCase01: [a-z]+");
         t->printTitle();
 
-        RegExp::Expression expr("[a-z]+");
+        RegExp::Expression::Expression expr("[a-z]+");
 
         CppUnitTest::assertTrue(t,expr.match("alexander1000"));
 

@@ -6,7 +6,7 @@
 #include <syntax-tree-lib.h>
 #include <regexp/predicate.h>
 
-namespace RegExp
+namespace RegExp::Expression
 {
     class Expression
     {
@@ -17,9 +17,9 @@ namespace RegExp
         bool match(std::string*);
         bool match(const char*);
     private:
-        std::list<Predicate::Predicate*>* predicates;
+        std::list<RegExp::Predicate::Predicate*>* predicates;
 
-        static std::list<Predicate::Predicate*>* parseSyntaxTree(SyntaxTree::Syntax::SyntaxElement*);
+        static std::list<RegExp::Predicate::Predicate*>* parseSyntaxTree(SyntaxTree::Syntax::SyntaxElement*);
     };
 }
 
