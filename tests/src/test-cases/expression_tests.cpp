@@ -10,7 +10,7 @@ namespace RegExpTests
 
         RegExp::Expression::Expression expr("[a-z]+");
 
-        CppUnitTest::assertTrue(t,expr.match("alexander1000"));
+        CppUnitTest::assertFalse(t,expr.match("alexander1000"));
 
         t->finish();
         return t;
