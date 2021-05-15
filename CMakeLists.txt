@@ -51,6 +51,7 @@ set(REGEXP_SOURCES_TEST
     tests/src/test-cases/lexer_capture_tests.cpp
     tests/src/test-cases/syntax_tests.cpp
     tests/src/test-cases/predicate_tests.cpp
+    tests/src/test-cases/expression_tests.cpp
 )
 
 add_executable(

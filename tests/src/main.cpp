@@ -17,6 +17,8 @@ int main() {
     testSuite.addTestCase(RegExpTests::testPredicate_AlphabetInvert_TestCase01());
     testSuite.addTestCase(RegExpTests::testPredicate_OneOf_TestCase01());
 
+    testSuite.addTestCase(RegExpTests::testExpressionMatchCase01());
+
     testSuite.printTotal();
 
     return 0;

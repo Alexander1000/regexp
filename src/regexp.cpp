@@ -4,7 +4,19 @@
 
 namespace RegExp
 {
-    Expression::Expression(std::string *regexp)
+    Expression::Expression(std::string* regexp)
+    {
+        RegExp::Lexer lexer(regexp);
+
+        RegExp::Syntax::Tree tree;
+        tree.initializeDefaults();
+
+        auto syntaxTree = tree.parse(lexer.parseTokens());
+
+        this->predicates = Expression::parseSyntaxTree(syntaxTree);
+    }
+
+    Expression::Expression(const char* regexp)
     {
         RegExp::Lexer lexer(regexp);
 
@@ -20,5 +32,15 @@ namespace RegExp
     {
         auto elements = new std::list<Predicate::Predicate*>;
         return elements;
+    }
+
+    bool Expression::match(std::string* str)
+    {
+        return false;
+    }
+
+    bool Expression::match(const char* str)
+    {
+        return false;
     }
 }

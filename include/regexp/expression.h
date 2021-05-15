@@ -12,6 +12,10 @@ namespace RegExp
     {
     public:
         Expression(std::string*);
+        Expression(const char*);
+
+        bool match(std::string*);
+        bool match(const char*);
     private:
         std::list<Predicate::Predicate*>* predicates;
 
