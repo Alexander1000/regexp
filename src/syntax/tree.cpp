@@ -99,6 +99,11 @@ namespace RegExp::Syntax
         rule14->addMatch(new SyntaxTree::Syntax::RuleMatch("oneof"));
         this->rules->push_back(rule14);
 
+        auto rule15 = new SyntaxTree::Syntax::Rule("expr");
+        auto q09 = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::OneOrMoreMatchType);
+        rule15->addMatch(new SyntaxTree::Syntax::RuleMatch("expr", q09));
+        this->rules->push_back(rule15);
+
         // @syntax-tree: stop-autogenerate
     }
 }

@@ -1,3 +1,6 @@
+# for rebuild rules run command:
+# syntax-tree -s syntax.s -i src/syntax/tree.cpp
+
 # quantifier rules
 quantifier [t:quantifier]
 quantifier [t:quantifierOpen t:quantifierNumber t:quantifierClose]
@@ -24,3 +27,4 @@ expr [s:alphabetScope]
 expr [s:capture]
 expr [s:match]
 expr [s:oneof]
+expr [s:expr+]
