@@ -12,6 +12,7 @@ namespace RegExp::Expression
         if (element->getType() == SyntaxTree::Syntax::SyntaxElementType::TokenListType) {
             auto listElements = element->getListElements();
             auto itElement = listElements->begin(); // [ - token
+            RegExp::Syntax::assertTokenType(*itElement, RegExp::Token::TokenType::SquareBracketOpen);
             itElement++; // - alphabet
             itElement++; // ] - token
             itElement++; // quantifier

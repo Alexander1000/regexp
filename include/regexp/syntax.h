@@ -5,6 +5,12 @@
 
 namespace RegExp::Syntax
 {
+    class UnexpectedToken : public std::exception
+    {};
+
+    class UnexpectedSyntaxElement : public std::exception
+    {};
+
     class Tree : public SyntaxTree::Syntax::Tree
     {
     public:
@@ -13,6 +19,8 @@ namespace RegExp::Syntax
     };
 
     bool isRule(SyntaxTree::Syntax::SyntaxElement*, const char*);
+
+    void assertTokenType(SyntaxTree::Syntax::SyntaxElement*, int);
 }
 
 #endif

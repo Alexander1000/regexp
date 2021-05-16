@@ -11,6 +11,7 @@ set(REGEXP_SOURCES
     src/token/token_map.cpp
     src/syntax/tree.cpp
     src/syntax/is_rule.cpp
+    src/syntax/assert_token_type.cpp
     src/scaner/scaner.cpp
     src/predicate/predicate.cpp
     src/predicate/alphabet.cpp
