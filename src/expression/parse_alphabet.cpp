@@ -1,5 +1,6 @@
 #include <regexp.h>
 #include <syntax-tree-lib.h>
+#include <iostream>
 
 namespace RegExp::Expression
 {
@@ -20,9 +21,32 @@ namespace RegExp::Expression
                 invert = true;
                 itElement++; // alphabet
             }
+            auto p = Expression::parseAlphabetPredicate(*itElement, invert);
             itElement++; // ] - token
             RegExp::Syntax::assertTokenType(*itElement, RegExp::Token::TokenType::SquareBracketClose);
             itElement++; // quantifier
         }
+    }
+
+    RegExp::Predicate::Predicate* Expression::parseAlphabetPredicate(SyntaxTree::Syntax::SyntaxElement *element, bool invert)
+    {
+        if (element->getType() == SyntaxTree::Syntax::SyntaxElementType::SyntaxType) {
+            return Expression::parseAlphabetPredicate(element->getElement(), invert);
+        }
+
+        if (element->getType() == SyntaxTree::Syntax::SyntaxElementType::TokenListType) {
+            auto tokens = new std::list<SyntaxTree::Token::Token*>;
+
+            for (auto & token : *element->getListElements()) {
+                if (token->getType() != SyntaxTree::Syntax::SyntaxElementType::TokenType) {
+                    throw RegExp::Syntax::UnexpectedSyntaxElement();
+                }
+                tokens->push_back(token->getToken());
+            }
+
+            return new RegExp::Predicate::Alphabet(tokens, invert);
+        }
+
+        throw RegExp::Syntax::UnexpectedSyntaxElement();
     }
 }

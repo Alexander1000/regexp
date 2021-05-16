@@ -6,16 +6,16 @@ namespace RegExp::Syntax
     void assertTokenType(SyntaxTree::Syntax::SyntaxElement* element, int type)
     {
         if (element->getType() != SyntaxTree::Syntax::SyntaxElementType::TokenType) {
-            throw new UnexpectedSyntaxElement;
+            throw UnexpectedSyntaxElement();
         }
 
         auto token = element->getToken();
         if (token == nullptr) {
-            throw new UnexpectedToken;
+            throw UnexpectedToken();
         }
 
         if (token->getType() != type) {
-            throw new UnexpectedToken;
+            throw UnexpectedToken();
         }
     }
 }

@@ -22,6 +22,7 @@ namespace RegExp::Expression
         static std::list<RegExp::Predicate::Predicate*>* parseSyntaxTree(SyntaxTree::Syntax::SyntaxElement*);
 
         static void parseAlphabetScope(SyntaxTree::Syntax::SyntaxElement*);
+        static RegExp::Predicate::Predicate* parseAlphabetPredicate(SyntaxTree::Syntax::SyntaxElement*, bool);
     };
 }
 
