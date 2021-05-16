@@ -24,14 +24,14 @@ namespace RegExp::Scaner
         switch (this->quantity->getType()) {
             case SyntaxTree::Syntax::QuantityType::CustomMatchType: {
                 int i;
-                for (i = 0; i < strlen(input) || i < this->quantity->getMax(); i++) {
+                for (i = 0; i < strlen(input) && i < this->quantity->getMax(); i++) {
                     chars[0] = input[i];
                     if (!this->predicate->calc(chars)) {
                         break;
                     }
                 }
 
-                if (i == 0 || i < this->quantity->getMin()) {
+                if (i < this->quantity->getMin()) {
                     return nullptr;
                 }
 
@@ -40,8 +40,24 @@ namespace RegExp::Scaner
                 memcpy(scannedString, input, sizeof(char) * i);
                 return scannedString;
             }
-            default: {
-                return nullptr;
+
+            case SyntaxTree::Syntax::QuantityType::OneOrMoreMatchType: {
+                int i;
+                for (i = 0; i < strlen(input); i++) {
+                    chars[0] = input[i];
+                    if (!this->predicate->calc(chars)) {
+                        break;
+                    }
+                }
+
+                if (i == 0) {
+                    return nullptr;
+                }
+
+                auto scannedString = (char*) malloc(sizeof(char) * (i + 1));
+                memset(scannedString, 0, sizeof(char) * (i + 1));
+                memcpy(scannedString, input, sizeof(char) * i);
+                return scannedString;
             }
         }
 
