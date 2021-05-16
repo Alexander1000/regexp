@@ -1,39 +1,48 @@
 #include <memory>
 #include <regexp.h>
+#include <syntax-tree-lib.h>
 
 namespace RegExp::Scaner
 {
-    Scaner::Scaner(std::list<RegExp::Predicate::Predicate*>* predicates)
+    Scaner::Scaner(RegExp::Predicate::Predicate* predicate)
     {
-        this->predicates = predicates;
+        this->predicate = predicate;
+        this->quantity = new SyntaxTree::Syntax::Quantity(SyntaxTree::Syntax::QuantityType::CustomMatchType, 1, 1);
+    }
+
+    Scaner::Scaner(RegExp::Predicate::Predicate* predicate, SyntaxTree::Syntax::Quantity* quantity)
+    {
+        this->predicate = predicate;
+        this->quantity = quantity;
     }
 
     char* Scaner::scan(const char *input)
     {
         auto chars = new char[2];
         memset(chars, 0, sizeof(char) * 2);
-        int nCurChar = 0;
 
-        for (int i = 0; i < strlen(input); i++) {
-            chars[0] = input[i];
-
-            for (auto & predicate : *this->predicates) {
-                if (predicate->calc(chars)) {
-                    nCurChar++;
-                    break;
+        switch (this->quantity->getType()) {
+            case SyntaxTree::Syntax::QuantityType::CustomMatchType: {
+                int i;
+                for (i = 0; i < strlen(input) || i < this->quantity->getMax(); i++) {
+                    chars[0] = input[i];
+                    if (!this->predicate->calc(chars)) {
+                        break;
+                    }
                 }
-            }
 
-            if (nCurChar != i + 1) {
-                break;
-            }
-        }
+                if (i == 0 || i < this->quantity->getMin()) {
+                    return nullptr;
+                }
 
-        if (nCurChar > 0) {
-            auto scannedString = (char*) malloc(sizeof(char) * (nCurChar + 1));
-            memset(scannedString, 0, sizeof(char) * (nCurChar + 1));
-            memcpy(scannedString, input, sizeof(char) * nCurChar);
-            return scannedString;
+                auto scannedString = (char*) malloc(sizeof(char) * (i + 1));
+                memset(scannedString, 0, sizeof(char) * (i + 1));
+                memcpy(scannedString, input, sizeof(char) * i);
+                return scannedString;
+            }
+            default: {
+                return nullptr;
+            }
         }
 
         return nullptr;

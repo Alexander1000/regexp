@@ -2,6 +2,7 @@
 #define H_REGEXP_SCANER_INCLUDE
 
 #include <list>
+#include <syntax-tree-lib.h>
 #include <regexp/predicate.h>
 
 namespace RegExp::Scaner
@@ -9,13 +10,15 @@ namespace RegExp::Scaner
     class Scaner
     {
     public:
-        Scaner(std::list<RegExp::Predicate::Predicate*>* predicates);
+        Scaner(RegExp::Predicate::Predicate*);
+        Scaner(RegExp::Predicate::Predicate*, SyntaxTree::Syntax::Quantity*);
 
         char* scan(std::string*);
         char* scan(const char*);
 
     private:
-        std::list<RegExp::Predicate::Predicate*>* predicates;
+        RegExp::Predicate::Predicate* predicate;
+        SyntaxTree::Syntax::Quantity* quantity;
     };
 }
 

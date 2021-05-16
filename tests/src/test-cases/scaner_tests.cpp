@@ -24,10 +24,7 @@ namespace RegExpTests
 
         auto p = new RegExp::Predicate::Alphabet(testTokens);
 
-        auto pList = new std::list<RegExp::Predicate::Predicate*>;
-        pList->push_back(p);
-
-        auto scaner = new RegExp::Scaner::Scaner(pList);
+        auto scaner = new RegExp::Scaner::Scaner(p);
 
         auto parsedString = scaner->scan("alexander");
         CppUnitTest::assertEquals(t, "alexander", parsedString);
