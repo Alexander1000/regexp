@@ -5,6 +5,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(REGEXP_SOURCES
     src/expression/regexp.cpp
+    src/expression/parse_alphabet.cpp
     src/lexer.cpp
     src/token/token.cpp
     src/token/token_map.cpp

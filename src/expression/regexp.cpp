@@ -45,6 +45,7 @@ namespace RegExp::Expression
                 }
                 if (RegExp::Syntax::isRule(treeElement, "alphabetScope")) {
                     // do make predicate for check alphabet
+                    Expression::parseAlphabetScope(treeElement);
                 }
             }
         }
