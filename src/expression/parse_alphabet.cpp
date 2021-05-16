@@ -13,8 +13,15 @@ namespace RegExp::Expression
             auto listElements = element->getListElements();
             auto itElement = listElements->begin(); // [ - token
             RegExp::Syntax::assertTokenType(*itElement, RegExp::Token::TokenType::SquareBracketOpen);
-            itElement++; // - alphabet
+            itElement++; // - invert or alphabet
+            bool invert = false;
+            if ((*itElement)->getType() == SyntaxTree::Syntax::SyntaxElementType::TokenType) {
+                RegExp::Syntax::assertTokenType(*itElement, RegExp::Token::TokenType::InvertAlphabet);
+                invert = true;
+                itElement++; // alphabet
+            }
             itElement++; // ] - token
+            RegExp::Syntax::assertTokenType(*itElement, RegExp::Token::TokenType::SquareBracketClose);
             itElement++; // quantifier
         }
     }
