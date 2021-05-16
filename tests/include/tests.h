@@ -28,7 +28,8 @@ namespace RegExpTests
 
     CppUnitTest::TestCase* testExpressionMatchCase01();
 
-    CppUnitTest::TestCase* testScanerCase01();
+    CppUnitTest::TestCase* testScaner_OneOrMoreMatchType_Case01();
+    CppUnitTest::TestCase* testScaner_CustomMatchType_From3To6_Case01();
 }
 
 #endif

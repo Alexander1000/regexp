@@ -19,7 +19,8 @@ int main() {
 
     testSuite.addTestCase(RegExpTests::testExpressionMatchCase01());
 
-    testSuite.addTestCase(RegExpTests::testScanerCase01());
+    testSuite.addTestCase(RegExpTests::testScaner_OneOrMoreMatchType_Case01());
+    testSuite.addTestCase(RegExpTests::testScaner_CustomMatchType_From3To6_Case01());
 
     testSuite.printTotal();
 
